@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
   def show
-    @user = User.where(id: 1)
+    @user = User.find(current_user.id)
   end
 end
