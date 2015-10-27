@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  has_many :items
+  has_many :items, dependent: :destroy
   
   def name
     name = self.email.split('@')[0]

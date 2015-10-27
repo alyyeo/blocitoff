@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <nav role="navigation">
@@ -19,6 +20,18 @@
       <% end %>
     </div>
   </nav>
+  
+  <div class="flash">
+    <% if flash[:notice] %>
+      <script>
+        Materialize.toast('<%= flash[:notice] %>', 1000)
+      </script>
+    <% elsif flash[:error] %>
+      <script>
+        Materialize.toast('<%= flash[:error] %>', 1000)
+      </script>
+    <% end %>
+  </div>
   
   <div class="container">
     <%= yield %>

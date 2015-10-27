@@ -1,0 +1,7 @@
+<% if @item.valid? %>
+    $('.task-list').prepend("<%= escape_javascript(render(@item)) %>");
+    $('.item-form').html("<%= escape_javascript(render partial: 'items/form', locals: { item: Item.new }) %>");
+    $('.flash').prepend("<%= flash[:notice] %>");
+<% else %>
+    $('.flash').prepend("<%= flash[:error] %>");
+<% end %>

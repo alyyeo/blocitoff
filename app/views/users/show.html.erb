@@ -4,10 +4,15 @@
     <h4>You have no current items!</h4>
 <% end %>
 
+<div class="item-form">    
+    <%= render partial: 'items/form', locals: { item: Item.new } %>
+</div>
+
 <ul class="collection with-header">
     <li class="collection-header"><h4>Tasks</h4></li>
-    <% current_user.items.each do |item| %>
-        <li class="collection-item"><%= render item %></li>
-    <% end %>
+    <div class="task-list">
+        <% current_user.items.each do |item| %>
+            <%= render item %>
+        <% end %>
+    </div>
 </ul>
-<%= render partial: 'items/form', locals: { item: Item.new } %>

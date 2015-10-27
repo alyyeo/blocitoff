@@ -1,1 +1,13 @@
-<%= item.name %>
+<%= content_tag :div, class: 'collection-item', id: "item-#{item.id}" do %>
+    <div class="row">
+        <div class="col s10">
+            <%= item.name %>
+        </div>
+        <div class="col s1">
+            <%= link_to (item.complete ? ('<i class="material-icons">check_box</i>'.html_safe) : ('<i class="material-icons">check_box_outline_blank</i>'.html_safe)), user_item_toggle_path(current_user, item), method: :put %>
+        </div>
+        <div class="col s1">
+            <%= link_to '<i class="material-icons">delete</i>'.html_safe, [item.user, item], method: :delete, class: 'btn-floating waves-effect waves-light red btn-small secondary-content', remote: true %>
+        </div>
+    </div>
+<% end %>
