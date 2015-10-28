@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   def name
     name = self.email.split('@')[0]
   end
+  
+  protected
+  def confirmation_required?
+    false
+  end
 end

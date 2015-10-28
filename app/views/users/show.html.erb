@@ -12,7 +12,14 @@
     <li class="collection-header"><h4>Tasks</h4></li>
     <div class="task-list">
         <% current_user.items.each do |item| %>
-            <%= render item %>
+            <% if !item.complete %>
+                <%= render item %>
+            <% end %>
+        <% end %>
+        <% current_user.items.each do |item| %>
+            <% if item.complete %>
+                <%= render item %>
+            <% end %>
         <% end %>
     </div>
 </ul>
