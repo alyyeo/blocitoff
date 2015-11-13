@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   
   root 'users#show'
   get 'about' => 'welcome#about'
+  
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
+  end
 end
