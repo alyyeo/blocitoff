@@ -6,8 +6,17 @@ class User < ActiveRecord::Base
          
   has_many :items, dependent: :destroy
   
+  before_create :generate_auth_token
+  
   def name
     name = self.email.split('@')[0]
+  end
+  
+  def generate_auth_token
+    loop do
+      self.auth_token  = SecureRandom.base64(64)
+      break unless User.find_by(auth_token: auth_token)
+    end
   end
   
   protected
